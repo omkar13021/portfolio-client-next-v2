@@ -25,7 +25,7 @@ const Home = () => {
             </p>
 
             <div className={styles.downloadResume}>
-              <a href='/assets/omkarpanchal_resume.pdf' target="_blank" rel="noopener noreferrer">
+              <a href='/cv/omkarpanchal_resume.pdf' target="_blank" rel="noopener noreferrer">
                 <img className={styles.downloadIcon} src='/assets/icons/file.png' alt='Download icon' /> Resume
               </a>
             </div>
