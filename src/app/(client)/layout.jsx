@@ -1,7 +1,7 @@
 "use client"
 
 import { Provider } from 'react-redux'
-import Header from './_lib/components/Header'
+import Header from './_lib/components/Header.jsx'
 import './_lib/styles/globals.css'
 import store from '../redux/store'
 
