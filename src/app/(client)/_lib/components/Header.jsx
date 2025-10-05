@@ -128,7 +128,6 @@ const Header = () => {
 
                 <nav className={styles.mobileNavLinks}>
                     <Link href="/" onClick={closeMobileMenu}>Home</Link>
-                    <Link href="/about" onClick={closeMobileMenu}>About Me</Link>
                     <Link href="/blogs" onClick={closeMobileMenu}>Blogs</Link>
                     <Link href="/projects" onClick={closeMobileMenu}>Projects</Link>
                     <Link href="/contact" onClick={closeMobileMenu}>Contact Me</Link>
