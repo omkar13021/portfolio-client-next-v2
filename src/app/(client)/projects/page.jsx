@@ -2,86 +2,68 @@
 
 import styles from '../_lib/styles/project.module.css';
 import Link from "next/link";
+import { projectsData } from '../_lib/data/projectsData';
 
 function Project() {
 
-    const projects = [
-        {
-            "_id": "1",
-            "title": "Personal Portfolio and blog Website",
-            "description": "A personal website designed to showcase my portfolio, projects, and blogs",
-            "projectUrl": "https://omkarcodes.online/",
-            "projectImagePath": "/assets/images/img-projects/avatar.svg",
-        },
-        {
-            "_id": "2",
-            "title": "Video Calling App",
-            "description": "Created video calling app using WebRTC and Socket.io",
-            "projectUrl": "https://videocalling.omkarcodes.online/",
-            "projectImagePath": "/assets/images/img-projects/p7.png",
-
-        },
-        {
-            "_id": "3",
-            "title": "Telephone Dairy",
-            "description": "A web-based application designed for efficient contact management",
-            "projectUrl": "https://telephonediary.omkarcodes.online/",
-            "projectImagePath": "/assets/images/img-projects/p3.png",
-        },
-        {
-            "_id": "4",
-            "title": "The Super Saiyan: Animation Game",
-            "description": "An interactive browser game featuring Goku from the Dragon Ball series, built with HTML, CSS, and JavaScript",
-            "projectUrl": "https://supersaiyan.omkarcodes.online/",
-            "projectImagePath": "/assets/images/img-projects/goku2.png",
-        },
-        // {
-        //     "_id": "5",
-        //     "title": "Amazon Clone",
-        //     "description": "A full-stack e-commerce web application that closely mimics the Amazon user interface",
-        //     "projectUrl": "https://clone.omkarcodes.online/",
-        //     "projectImagePath": "/assets/images/img-projects/amz.jfif",
-
-        // },
-        {
-            "_id": "6",
-            "title": "React Admin Panel",
-            "description": "Implemented a React admin panel for efficient data management",
-            "projectUrl": "https://admin.omkarcodes.online/",
-            "projectImagePath": "/assets/images/img-projects/laptop.svg",
-
-        },
-
-    ]
-
-    // Render Project function
-    const renderProject = projects.map((project) => (
-        <div className={styles.projectCard} key={project._id}>
-            <div className={styles.imageContainer}>
-                <img src={project.projectImagePath} alt="projectImg" />
-                <div className={styles.overlay}>
-                    <p>{project.title}</p>
+    const renderProject = projectsData.map((project) => (
+        <div className={styles.projectCard} key={project.id}>
+            <div className={styles.cardImage}>
+                <img src={project.imageUrl} alt={project.title} />
+                <div className={styles.cardOverlay}>
+                    <span className={styles.category}>{project.category}</span>
                 </div>
             </div>
-            <div>
-                <button
-                    className={styles.projectViewButton}
-                    onClick={() => window.open(project.projectUrl, '_blank', 'noopener noreferrer')}
+            <div className={styles.cardContent}>
+                <h3 className={styles.projectTitle}>{project.title}</h3>
+                <p className={styles.projectDescription}>{project.shortDescription}</p>
+                <div className={styles.techStack}>
+                    {project.technologies.slice(0, 3).map((tech, index) => (
+                        <span key={index} className={styles.techBadge}>{tech}</span>
+                    ))}
+                    {project.technologies.length > 3 && (
+                        <span className={styles.techBadge}>+{project.technologies.length - 3}</span>
+                    )}
+                </div>
+            </div>
+            <div className={styles.cardActions}>
+                <Link href={`/projects/${project.id}`} className={styles.detailsButton}>
+                    View Details
+                </Link>
+                <a 
+                    href={project.projectUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className={styles.liveButton}
                 >
-                    View
-                </button>
+                    Live Demo
+                </a>
             </div>
         </div>
     ));
 
     return (
         <div className={styles.projectSection}>
-            <div className={styles.projectInfo}>
-                <h2>My Recent Work</h2>
-                <p>Here are a few past projects I've worked on. Want to see more? <a href='https://dribbble.com/omkar13021' target='_blank' rel='noopener noreferrer'>click here</a></p>
+            <div className={styles.projectHeader}>
+                <h1 className={styles.pageTitle}>Featured Projects</h1>
+                <p className={styles.pageSubtitle}>
+                    A collection of projects showcasing my expertise in full-stack development, 
+                    real-time systems, and modern web technologies.
+                </p>
             </div>
-            <div className={styles.projectContainer}>
+            <div className={styles.projectGrid}>
                 {renderProject}
+            </div>
+            <div className={styles.moreProjects}>
+                <p>Want to see more of my work?</p>
+                <a 
+                    href='https://github.com/omkar755292' 
+                    target='_blank' 
+                    rel='noopener noreferrer'
+                    className={styles.githubLink}
+                >
+                    Visit My GitHub
+                </a>
             </div>
         </div>
     );
