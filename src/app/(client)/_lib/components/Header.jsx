@@ -81,6 +81,7 @@ const Header = () => {
                     {/* Desktop Navigation */}
                     <div className={styles.navlink}>
                         <Link href="/" aria-label="Home">Home</Link>
+                        <Link href="/journey" aria-label="Journey">Journey</Link>
                         <Link href="/blogs" aria-label="Blogs">Blogs</Link>
                         <Link href="/projects" aria-label="Projects">Projects</Link>
                         <Link href="/contact" aria-label="Contact Me">Contact Me</Link>
@@ -128,6 +129,7 @@ const Header = () => {
 
                 <nav className={styles.mobileNavLinks}>
                     <Link href="/" onClick={closeMobileMenu}>Home</Link>
+                    <Link href="/journey" onClick={closeMobileMenu}>Journey</Link>
                     <Link href="/blogs" onClick={closeMobileMenu}>Blogs</Link>
                     <Link href="/projects" onClick={closeMobileMenu}>Projects</Link>
                     <Link href="/contact" onClick={closeMobileMenu}>Contact Me</Link>
